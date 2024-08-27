@@ -13,7 +13,7 @@ mongoose.connect('mongodb+srv://damonitor:dam123@cluster0.t8ra2vx.mongodb.net/',
 
 const setupAdmin = async () => {
   try {
-    const hashedPassword = await bcrypt.hash(adminPassword, 10);
+    const hashedPassword = await bcrypt.hash(adminPassword, 5);
     const admin = new User({
       email: adminEmail,
       password: hashedPassword,

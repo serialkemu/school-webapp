@@ -1,11 +1,13 @@
 const express = require('express');
 const router = express.Router();
 const adminController = require('../Controllers/adminController');
-const { protect } = require('../Middlewares/authMiddleware');
+const {authenticate} = require('../Middlewares/authMiddleware')
 
+// Apply authentication middleware to all routes
+router.use(authenticate);
 // Protected admin routes
-router.get('/applications', protect, adminController.getAllApplications);
-router.patch('/applications/:type/:id/approve', protect, adminController.approveApplication);
-router.patch('/applications/:type/:id/reject', protect, adminController.rejectApplication);
+router.get('/applications', adminController.getAllApplications);
+router.patch('/applications/:type/:id/approve', adminController.approveApplication);
+router.patch('/applications/:type/:id/reject', adminController.rejectApplication);
 
 module.exports = router;

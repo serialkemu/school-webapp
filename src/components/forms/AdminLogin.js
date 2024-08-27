@@ -21,9 +21,10 @@ const Login = () => {
     try {
       // Send login request to the backend
       const response = await axios.post('http://localhost:5000/api/users/login', formData);
+      
       // Extract token from response
       const { token, user } = response.data;
-      
+      console.log(token)
       // Store the token in localStorage (or any preferred storage)
       localStorage.setItem('token', token);
       
@@ -31,7 +32,7 @@ const Login = () => {
       navigate('/admin-panel');
     } catch (err) {
       // Handle errors, set the error message to be displayed
-      setError(err.response?.data?.error || 'An error occurred during login.');
+      setError(err.response?.data?.error || 'An error occurred during login');
     }
   };
 

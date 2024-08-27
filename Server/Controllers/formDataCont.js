@@ -8,16 +8,16 @@ const asyncErrorHandler = require('../Utils/asyncErrorHandler');
 const CustomError = require('../Utils/customError');
 
 exports.preSchoolData = asyncErrorHandler (async (req, res) => {
-    const {firstName, otherNames, classGrade, phoneNumber, email,} = req.body;
+    const {firstName, otherNames, classGrade, phoneNumber, email} = req.body;
     
     const preSchoolApplication = await PreSchool.create({
-      firstName, otherNames, classGrade, phoneNumber, email,
+      firstName, otherNames, classGrade, phoneNumber, email
     });
     res.status(201).json({ message: "Congrats, Form submitted successfully!" });
 });
 
 exports.lowerPrimaryData = asyncErrorHandler (async (req, res) => {
-    const {firstName, otherNames, classGrade, phoneNumber, email,} = req.body;
+    const {firstName, otherNames, classGrade, phoneNumber, email} = req.body;
     
     const lowerPrimaryApplication = await LowerPrimary.create({
       firstName, otherNames, classGrade, phoneNumber, email,
@@ -26,7 +26,7 @@ exports.lowerPrimaryData = asyncErrorHandler (async (req, res) => {
 });
 
 exports.upperPrimaryData = asyncErrorHandler (async (req, res) => {
-    const {firstName, otherNames, classGrade, phoneNumber, email,} = req.body;
+    const {firstName, otherNames, classGrade, phoneNumber, email} = req.body;
     
     const upperPrimaryApplication = await UpperPrimary.create({
       firstName, otherNames, classGrade, phoneNumber, email,
@@ -35,7 +35,7 @@ exports.upperPrimaryData = asyncErrorHandler (async (req, res) => {
 });
 
 exports.secondaryData = asyncErrorHandler (async (req, res) => {
-    const {firstName, otherNames, classGrade, phoneNumber, email,} = req.body;
+    const {firstName, otherNames, classGrade, phoneNumber, email} = req.body;
     
     const secondaryApplication = await Secondary.create({
       firstName, otherNames, classGrade, phoneNumber, email,
@@ -44,7 +44,7 @@ exports.secondaryData = asyncErrorHandler (async (req, res) => {
 });
 
 exports.collegeData = asyncErrorHandler (async (req, res) => {
-  const {firstName, otherNames, course, idNumber, phoneNumber, email,} = req.body;
+  const {firstName, otherNames, course, idNumber, phoneNumber, email} = req.body;
   
   const collegeApplication = await College.create({
     firstName, otherNames, course, idNumber, phoneNumber, email,

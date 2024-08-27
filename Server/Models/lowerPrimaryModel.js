@@ -35,6 +35,6 @@ const lowerPrimarySchema = new Schema({
   },
 }, { timestamps: true });
 
-const LowerPrimary = mongoose.model('LowerPrimaryApplication', lowerPrimarySchema);
+const LowerPrimary = mongoose.model('Lower-Primary Application', lowerPrimarySchema);
 
 module.exports = LowerPrimary;

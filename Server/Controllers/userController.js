@@ -5,7 +5,7 @@ const asyncErrorHandler = require('../Utils/asyncErrorHandler');
 const CustomError = require('../Utils/customError');
 
 // Generate JWT token
-const generateToken = (id) => {
+const signToken = (id) => {
   return jwt.sign({ id }, process.env.JWT_SECRET, { expiresIn: '1h' });
 };
 
@@ -13,23 +13,27 @@ const generateToken = (id) => {
 exports.adminLogin = asyncErrorHandler (async (req, res) => {
     const { email, password } = req.body;
     console.log(email)
-    // Check if the user exists
-    const user = await User.findOne({ email });
+    console.log(password)
+
+    const user = await User.findOne({ email }).select('+password');
 
     if (!user) {
-        return res.status(401).json({ error: 'Invalid username or password' });
+        console.log('User not found');
+        return next(new CustomError("User with that email does not exist!", 404));
     }
 
-    // Check if the password is correct
-    const isMatch = await user.matchPassword(password);
+    console.log('Stored password:', user.password);
+    console.log('Provided Pin:', password);
+
+    const isMatch = user.password === password;
+    console.log('Password Match:', isMatch);
 
     if (!isMatch) {
-        return res.status(401).json({ error: 'Invalid username or password' });
+        return next(new CustomError("Incorrect email or password!!", 400));
     }
 
-    // Generate token
-    const token = generateToken(user._id);
-
+    const token = signToken(user._id);
+    console.log(token)
     res.status(200).json({
         message: 'Login successful',
         token,
