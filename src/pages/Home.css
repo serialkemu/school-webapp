@@ -1,0 +1,34 @@
+/* Home.css */
+
+.parallax-section {
+    background-image: url('/home/kimunto/Downloads/school-website-master/src/assets/laphome.jpg'); /* Add your image URL */
+    min-height: 400px; 
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    border-top-left-radius:20px ;
+    border-top-right-radius: 20px;
+}
+
+  
+  .parallax-section-2 {
+    background-image: url('/home/kimunto/Downloads/school-website-master/src/assets/laphome.jpg'); 
+    border-top-left-radius:0px ;
+    border-top-right-radius: 0px;
+    border-bottom-left-radius:20px ;
+    border-bottom-right-radius: 20px;
+
+  }
+  
+  .parallax-title {
+    font-size: 3rem;
+    font-weight: bold;
+  }
+  
