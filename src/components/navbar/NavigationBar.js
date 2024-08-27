@@ -21,11 +21,9 @@ const NavigationBar = () => {
           <FormControl type="text" placeholder="Search" variant="outline-success" className="mr-sm-2" />
         </Form>
         <Nav>
-          <Nav.Link as={Link} to="/login">Login</Nav.Link>
+          <Nav.Link as={Link} to="/admin-login">Admin-Login</Nav.Link>
         </Nav>
-        <Nav>
-          <Nav.Link as={Link} to="/admin">A</Nav.Link>
-          </Nav>
+
         
       </Navbar.Collapse>
     </Navbar>

@@ -1,7 +1,7 @@
 /* Home.css */
 
 .parallax-section {
-    background-image: url('/home/kimunto/Downloads/school-website-master/src/assets/laphome.jpg'); /* Add your image URL */
+    background-image: url('/home/gangsta/Documents/Carreer/Web-Projects/school-webapp/src/assets/laphome.jpg');
     min-height: 400px; 
     background-attachment: fixed;
     background-position: center;
@@ -19,7 +19,7 @@
 
   
   .parallax-section-2 {
-    background-image: url('/home/kimunto/Downloads/school-website-master/src/assets/laphome.jpg'); 
+    background-image: url('/home/gangsta/Documents/Carreer/Web-Projects/school-webapp/src/assets/laphome.jpg'); 
     border-top-left-radius:0px ;
     border-top-right-radius: 0px;
     border-bottom-left-radius:20px ;
