@@ -25,15 +25,11 @@ exports.authenticate = asyncErrorHandler(async (req, res, next) => {
         console.log('User found:', user);
 
         if (!user) {
-            return res.status(401).send({ error: 'User not found' });
+            return next(new CustomError("User not Found!", 401));
         }
 
         req.user = user;
-        if (user.role === 'admin') {
-            return next();
-        } else {
-            return res.status(403).send({ error: 'Unauthorized access' });
-        }
+
     } catch (error) {
         console.error('JWT Verification Error:', error.message);
         return next(new CustomError(error.message || 'Invalid auth token, please login again', 401));
