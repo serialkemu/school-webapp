@@ -12,7 +12,7 @@ const AdminPanel = () => {
       console.log('Fetching applications with type:', type, 'and status:', status);
 
       const token = localStorage.getItem('token');
-
+      console.log('token: ', token)
       if (token) {
         const authHeader = `Bearer ${token}`;
 

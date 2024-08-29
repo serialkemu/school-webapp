@@ -4,7 +4,7 @@ const mongoose = require('mongoose');
 const cors = require('cors');
 const formsRouter = require('./Router/formsRouter');
 const userRouter = require('./Router/userRouter');
-const adminRouter = require('./Router/adminRouter')
+const adminRouter = require('./Router/adminRouter');
 
 const dotenv = require('dotenv');
 dotenv.config({ path: './config.env' });

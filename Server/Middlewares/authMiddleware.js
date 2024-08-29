@@ -20,15 +20,20 @@ exports.authenticate = asyncErrorHandler(async (req, res, next) => {
         const data = jwt.verify(token, process.env.SECRET_STR);
         console.log('Decoded JWT data:', data);
 
-        // Find the user by ID
-        const user = await User.findOne({email:data.email});
+        // Find the user by email
+        const user = await User.findOne({ email: data.email });
         console.log('User found:', user);
 
         if (!user) {
             return next(new CustomError("User not Found!", 401));
         }
 
-        req.user = user;
+        if (user.role === 'admin') {
+            req.user = user; // Attach user to request
+            return next();
+        } else {
+            return res.status(403).send({ error: 'Unauthorized access' });
+        }
 
     } catch (error) {
         console.error('JWT Verification Error:', error.message);
