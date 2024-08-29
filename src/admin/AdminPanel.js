@@ -7,18 +7,34 @@ const AdminPanel = () => {
   const [type, setType] = useState('pre-school');
   const [status, setStatus] = useState('pending');
 
-  useEffect(() => {
-    const fetchApplications = async () => {
-      try {
-        const response = await axios.get(`http://localhost:5000/api/applications/${type}`, {
-          params: { status }
-        });
-        setApplications(response.data);
-      } catch (error) {
-        console.error('Error fetching applications:', error);
-      }
-    };
+  const fetchApplications = async () => {
+    try {
+      console.log('Fetching applications with type:', type, 'and status:', status);
 
+      const token = localStorage.getItem('token');
+
+      if (token) {
+        const authHeader = `Bearer ${token}`;
+
+        const response = await axios.get(`http://localhost:5000/api/admin/applications/${type}`, {
+          params: { status },
+          headers: {
+            Authorization: authHeader,
+          },
+        });
+
+        console.log('Response data:', response.data);
+        setApplications(response.data);
+      } else {
+        console.warn('No token found in localStorage');
+      }
+    } catch (error) {
+      console.error('Error fetching applications:', error);
+    }
+  };
+
+  useEffect(() => {
+    console.log('Type or status changed:', { type, status });
     fetchApplications();
   }, [type, status]);
 

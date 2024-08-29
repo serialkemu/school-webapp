@@ -4,9 +4,11 @@ const bcrypt = require('bcryptjs');
 const asyncErrorHandler = require('../Utils/asyncErrorHandler');
 const CustomError = require('../Utils/customError');
 
+const dotenv = require('dotenv');
+dotenv.config({ path: '../config.env' });
 // Generate JWT token
-const signToken = (id) => {
-  return jwt.sign({ id }, process.env.JWT_SECRET, { expiresIn: '1h' });
+const signToken = (email) => {
+  return jwt.sign({ email }, process.env.SECRET_STR, { expiresIn: process.env.TOKEN_EXP });
 };
 
 // Admin Login
@@ -32,7 +34,7 @@ exports.adminLogin = asyncErrorHandler (async (req, res) => {
         return next(new CustomError("Incorrect email or password!!", 400));
     }
 
-    const token = signToken(user._id);
+    const token = signToken(user.email);
     console.log(token)
     res.status(200).json({
         message: 'Login successful',

@@ -6,7 +6,6 @@ const formsRouter = require('./Router/formsRouter');
 const userRouter = require('./Router/userRouter');
 const adminRouter = require('./Router/adminRouter')
 
-const PORT = process.env.PORT || 5000;
 const dotenv = require('dotenv');
 dotenv.config({ path: './config.env' });
 const CustomError = require('./Utils/customError');
@@ -29,7 +28,7 @@ app.use(express.json()); // To parse JSON bodies
 // POST route to handle form submissions
 app.use('/api', formsRouter);
 app.use('/api/users', userRouter);
-app.use('api/admin', adminRouter);
+app.use('/api/admin', adminRouter);
 app.all('*', (req, res, next) => {
   const err = new CustomError(`Can't find ${req.originalUrl} on the server!`, 404);
   next(err);

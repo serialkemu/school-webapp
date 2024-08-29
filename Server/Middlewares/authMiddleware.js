@@ -13,21 +13,29 @@ exports.authenticate = asyncErrorHandler(async (req, res, next) => {
     const token = authHeader.replace('Bearer ', '').trim();
 
     try {
+        console.log('Token:', token);
+        console.log('Using secret:', process.env.SECRET_STR);
+
+        // Verify JWT token
         const data = jwt.verify(token, process.env.SECRET_STR);
-        const user = await User.findById(data.id);
+        console.log('Decoded JWT data:', data);
+
+        // Find the user by ID
+        const user = await User.findOne({email:data.email});
+        console.log('User found:', user);
 
         if (!user) {
             return res.status(401).send({ error: 'User not found' });
         }
 
         req.user = user;
-
-        if (['admin'].includes(user.role)) {
+        if (user.role === 'admin') {
             return next();
         } else {
             return res.status(403).send({ error: 'Unauthorized access' });
         }
     } catch (error) {
-      return next(new CustomError(error.message || 'Invalid auth token, please login again', 401));
+        console.error('JWT Verification Error:', error.message);
+        return next(new CustomError(error.message || 'Invalid auth token, please login again', 401));
     }
 });

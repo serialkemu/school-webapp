@@ -8,6 +8,7 @@ const CustomError = require('../Utils/customError');
 
 // Controller to get all applications based on type and status
 exports.getAllApplications = asyncErrorHandler(async (req, res) => {
+  console.log('reached backend!!')
   const { type } = req.params;
   const { status } = req.query;
 
