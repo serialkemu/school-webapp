@@ -1,34 +1,76 @@
 /* Home.css */
 
 .parallax-section {
-    background-image: url('/home/kimunto/Downloads/school-website-master/src/assets/laphome.jpg'); /* Add your image URL */
-    min-height: 400px; 
-    background-attachment: fixed;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    position: relative;
-    color: white;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    border-top-left-radius:20px ;
-    border-top-right-radius: 20px;
+  background-image: url('/home/kimunto/Downloads/school-website-master/src/assets/laphome.jpg'); /* Add your image URL */
+  background-image: url('/home/kimunto/Downloads/school-website-master/src/assets/laphome.jpg');
+  min-height: 400px; 
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+  color: white;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  border-top-left-radius:20px ;
+  border-top-right-radius: 20px;
 }
 
-  
-  .parallax-section-2 {
-    background-image: url('/home/kimunto/Downloads/school-website-master/src/assets/laphome.jpg'); 
-    border-top-left-radius:0px ;
-    border-top-right-radius: 0px;
-    border-bottom-left-radius:20px ;
-    border-bottom-right-radius: 20px;
 
-  }
-  
-  .parallax-title {
-    font-size: 3rem;
-    font-weight: bold;
-  }
-  
+.parallax-section-2 {
+  background-image: url('/home/kimunto/Downloads/school-website-master/src/assets/img/laphome6.jpg'); 
+  min-height: 350px;
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+
+}
+
+.parallax-title {
+  font-size: 3rem;
+  font-weight: bold;
+}
+
+.custom-card img {
+  max-width: 45%;
+  height: auto;
+  margin: 0 5px;
+}
+
+.custom-cardz img {
+  max-width: 35%;
+  height: auto;
+  margin: 0 5px;
+}
+
+/* Remove borders from cards */
+.no-border {
+border: none;
+box-shadow: none; /* Remove the shadow if there's any */
+}
+
+/* Ensure the container does not have extra padding/margin */
+.container.bg {
+padding: 0;
+margin: 0;
+}
+
+/* General body adjustments if needed */
+body {
+margin: 0;
+padding: 0;
+}
+
+/* Optional: Adjust the card body padding if needed */
+.card-body {
+padding: 1rem;
+align-items: center;
+}
+
+/* Optional: Ensure the background of the container stretches fully */
+.container {
+max-width: 100%;
+}

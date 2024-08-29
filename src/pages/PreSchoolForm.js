@@ -29,19 +29,22 @@ const PreSchoolForm = () => {
     setFormData({ ...formData, classGrade: value });
   };
 
+  
   const handleSubmit = async (e) => {
     e.preventDefault();
+    console.log('Submit button clicked');
+    console.log('Form data:', formData);
   
-    try { 
+    try {
       // Send POST request to backend
       const response = await axios.post('http://localhost:5000/api/pre-school', formData);
-      console.log(response.data); // For debugging
+      console.log('Response:', response.data); // For debugging
   
       // Handle successful submission
       alert('Form submitted successfully!');
   
     } catch (error) {
-      console.error(error);
+      console.error('Error submitting form:', error);
       alert('Failed to submit form! Please try again.');
     }
   };
