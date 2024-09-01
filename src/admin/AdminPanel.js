@@ -10,8 +10,8 @@ const AdminPanel = () => {
   useEffect(() => {
     const fetchApplications = async () => {
       try {
-        const response = await axios.get(`http://localhost:5000/api/applications/${type}`, {
-          params: { status }
+        const response = await axios.get(`http://localhost:5000/api/applications/`, {
+          params: { type, status }
         });
         setApplications(response.data);
       } catch (error) {

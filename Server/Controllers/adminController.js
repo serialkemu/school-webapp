@@ -8,8 +8,7 @@ const CustomError = require('../Utils/customError');
 
 // Controller to get all applications based on type and status
 exports.getAllApplications = asyncErrorHandler(async (req, res) => {
-  const { type } = req.params;
-  const { status } = req.query;
+  const { type, status } = req.params;
 
   let filter = {};
   if (status) {
