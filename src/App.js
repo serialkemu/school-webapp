@@ -7,7 +7,7 @@ import Home from './pages/Home'
 import PreSchoolForm from './pages/PreSchoolForm';
 import LowerPrimaryForm from './pages/LowerPrimaryForm';
 import UpperPrimaryForm from './pages/UpperPrimaryForm';
-import SecondaryForm from './pages/SecondaryForm';
+import Secondary from './pages/highschool/Secondary';
 import CollegeForm from './pages/CollegeForm';
 import AdminPanel from './admin/AdminPanel';
 import Primary from './pages/primary/Primary';
@@ -28,7 +28,7 @@ const App = () => {
         <Route path='/primary' element={<Primary/>}/>
         <Route path="/lower-primary" element={<LowerPrimaryForm />} />
         <Route path="/upper-primary" element={<UpperPrimaryForm />} />
-        <Route path="/secondary" element={<SecondaryForm />} />
+        <Route path="/secondary" element={<Secondary/>} />
         <Route path="/college" element={<CollegeForm />} />
       
       </Routes>

@@ -1,76 +1,178 @@
-/* Home.css */
-
-.parallax-section {
-  background-image: url('/home/kimunto/Downloads/school-website-master/src/assets/laphome.jpg'); /* Add your image URL */
-  background-image: url('/home/kimunto/Downloads/school-website-master/src/assets/laphome.jpg');
-  min-height: 400px; 
-  background-attachment: fixed;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  position: relative;
-  color: white;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  border-top-left-radius:20px ;
-  border-top-right-radius: 20px;
+/* Global Styles */
+body, .container {
+  margin: 0;
+  padding: 0;
+  max-width: 100%;
 }
 
+/* Background Section */
+.bg {
+  background-color: #f8f9fa; /* Light grey background */
+  padding: 20px;
+}
 
-.parallax-section-2 {
-  background-image: url('/home/kimunto/Downloads/school-website-master/src/assets/img/laphome6.jpg'); 
-  min-height: 350px;
+/* Parallax Section */
+.parallax-section, .parallax-section-2 {
   background-attachment: fixed;
+  background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  background-size: cover;
   position: relative;
+  color: white;
+  padding: 100px 0;
+  text-align: center;
+}
 
+.parallax-section {
+  background-image: url('/home/kimunto/Downloads/school-website-master/src/assets/laphome.jpg');
+  min-height: 400px;
+}
+
+.parallax-section-2 {
+  background-image: url('/home/kimunto/Downloads/school-website-master/src/assets/img/laphome6.jpg');
+  min-height: 350px;
 }
 
 .parallax-title {
-  font-size: 3rem;
+  font-size: 2.5rem;
   font-weight: bold;
 }
 
-.custom-card img {
-  max-width: 45%;
+.text-align-center {
+  text-align: center;
+}
+
+/* Card Styling */
+/* Custom Card Styling */
+.custom-card {
+  width: 90%;
+  height: 70%;
+  transition: transform 0.3s ease-in-out, height 0.3s ease-in-out;
+  overflow: hidden;
+}
+
+.custom-cardz {
+  margin: 20px;
+  width: 90%;
+  height: 90%;
+  transition: transform 0.3s ease-in-out, height 0.3s ease-in-out;
+  overflow: hidden;
+}
+
+/* Hover Effect for Card Expansion */
+.custom-card:hover, .custom-cardz:hover {
+  transform: scale(1.05);
+  height: auto; /* Expands height based on content */
+}
+
+/* Add "Read More" functionality */
+.read-more-content {
+  max-height: 100px; /* Limit the initial height */
+  overflow: hidden;
+  transition: max-height 0.3s ease-in-out;
+}
+
+.custom-card:hover .read-more-content,
+.custom-cardz:hover .read-more-content {
+  max-height: 1000px; /* Expand to show full content */
+}
+
+.read-more-link {
+  display: block;
+  cursor: pointer;
+  text-align: center;
+  color: #740e07;
+  margin-top: 10px;
+}
+
+.read-more-link:hover {
+  text-decoration: underline;
+}
+
+
+.custom-card img, .custom-cardz img {
+  max-width: 75%;
   height: auto;
-  margin: 0 5px;
+  margin: 5px;
+  object-fit: cover;
 }
 
 .custom-cardz img {
   max-width: 35%;
-  height: auto;
-  margin: 0 5px;
 }
 
-/* Remove borders from cards */
-.no-border {
-border: none;
-box-shadow: none; /* Remove the shadow if there's any */
+/* Text Wrapping */
+.text-wrap {
+  word-wrap: break-word;
+  white-space: normal;
 }
 
-/* Ensure the container does not have extra padding/margin */
-.container.bg {
-padding: 0;
-margin: 0;
-}
-
-/* General body adjustments if needed */
-body {
-margin: 0;
-padding: 0;
-}
-
-/* Optional: Adjust the card body padding if needed */
 .card-body {
-padding: 1rem;
-align-items: center;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
-/* Optional: Ensure the background of the container stretches fully */
-.container {
-max-width: 100%;
+.equal-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+}
+
+/* Remove Card Borders */
+.no-border {
+  border: none;
+  box-shadow: none;
+}
+
+/* Card Image Responsiveness */
+.img-fluid {
+  max-width: 100%;
+  height: 30rem;
+  object-fit: cover;
+}
+
+/* Read More Toggle (For Dynamic Content) */
+.p-3 {
+  white-space: normal;
+  overflow: hidden;
+}
+
+/* Link Styling */
+.link-underline-opacity-25 {
+  text-decoration: underline;
+}
+
+.link-underline-opacity-100-hover:hover {
+  text-decoration: underline solid;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .custom-card-img {
+    max-width: 100%;
+    margin-bottom: 20px;
+  }
+
+  .custom-card-text, .custom-card-col {
+    margin-bottom: 20px;
+  }
+
+  .parallax-title {
+    font-size: 2rem;
+  }
+}
+
+@media (min-width: 768px) {
+  .custom-card-img {
+    width: 100%;
+    max-height: 200px;
+    margin: auto;
+  }
+
+  .equal-card {
+    height: 100%;
+  }
 }

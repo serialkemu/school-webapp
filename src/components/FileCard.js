@@ -1,3 +1,6 @@
+import React from "react";
+import {Row, Col, Card, CardImg} from 'react-bootstrap';
+
 const FileCard = ({ title, image, fileLinks }) => (
     <Card className="mb-4">
       <Card.Body>
@@ -26,3 +29,4 @@ const FileCard = ({ title, image, fileLinks }) => (
     </Card>
   );
   
+  export default FileCard
