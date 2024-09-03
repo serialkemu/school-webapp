@@ -1,39 +1,10 @@
-import { Button } from 'bootstrap';
 import React from 'react';
-import { Container, Row, Col, Card, CardImg} from 'react-bootstrap';
+import { Container, Row, Col} from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import primary3 from '../../assets/img/primary4.jpg'
+import FileCard from '../../components/FileCard';
 
 
-
-
-const FileCard = ({ title, image, fileLinks }) => (
-  <Card className="mb-4">
-    <Card.Body>
-      <Card.Title className="text-center">{title}</Card.Title>
-      <Row>
-        {image && (
-          <Col md={6} className="d-flex justify-content-around align-items-center">
-            <CardImg src={image} className="img-fluid rounded" />
-          </Col>
-        )}
-        {fileLinks && (
-          <Col md={6}>
-            <ul className="list-group">
-              {fileLinks.map((link, idx) => (
-                <li key={idx} className="list-group-item">
-                  <a href={link.url} target="_blank" rel="noopener noreferrer">
-                    {link.name}
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </Col>
-        )}
-      </Row>
-    </Card.Body>
-  </Card>
-);
 
 const Primary = () => {
   return (

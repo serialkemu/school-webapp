@@ -24,7 +24,7 @@ const NavigationBar = () => {
           <Nav.Link as={Link} to="/admin-login">Login</Nav.Link>
         </Nav>
         <Nav>
-          <Nav.Link as={Link} to="/admin">A</Nav.Link>
+          <Nav.Link as={Link} to="/admin-login">A</Nav.Link>
           </Nav>
         
       </Navbar.Collapse>
