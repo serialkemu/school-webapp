@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Container, Row, Col, Card, Form } from 'react-bootstrap';
+import { Container, Row, Col, Accordion, Card, Form } from 'react-bootstrap';
 import axios from 'axios';
 
 const AdminPanel = () => {
@@ -9,10 +9,7 @@ const AdminPanel = () => {
 
   const fetchApplications = async () => {
     try {
-      console.log('Fetching applications with type:', type, 'and status:', status);
-
       const token = localStorage.getItem('token');
-      console.log('token: ', token)
       if (token) {
         const authHeader = `Bearer ${token}`;
 
@@ -23,7 +20,6 @@ const AdminPanel = () => {
           },
         });
 
-        console.log('Response data:', response.data);
         setApplications(response.data);
       } else {
         console.warn('No token found in localStorage');
@@ -34,9 +30,19 @@ const AdminPanel = () => {
   };
 
   useEffect(() => {
-    console.log('Type or status changed:', { type, status });
     fetchApplications();
   }, [type, status]);
+
+  const getStatusClass = (applicationStatus) => {
+    switch (applicationStatus) {
+      case 'approved':
+        return 'bg-success text-white';
+      case 'rejected':
+        return 'bg-danger text-white';
+      default:
+        return '';
+    }
+  };
 
   return (
     <Container className="mt-4">
@@ -76,24 +82,26 @@ const AdminPanel = () => {
         </Row>
       </Form>
 
-      <Row>
-        {applications.map((application) => (
-          <Col md={4} key={application._id} className="mb-4">
-            <Card>
+      <Accordion>
+        {applications.map((application, index) => (
+          <Card key={application._id} className={`mb-3 ${getStatusClass(application.status)}`}>
+            <Accordion.Toggle as={Card.Header} eventKey={index.toString()} className="d-flex justify-content-between">
+              <span>{application.firstName} {application.otherNames}</span>
+            </Accordion.Toggle>
+            <Accordion.Collapse eventKey={index.toString()}>
               <Card.Body>
-                <Card.Title>{application.firstName} {application.otherNames}</Card.Title>
                 <Card.Text>
                   <strong>ID Number:</strong> {application.idNumber || 'N/A'}<br />
                   <strong>Course/Class:</strong> {application.course || application.classGrade || 'N/A'}<br />
-                  <strong>Phone:</strong> {application.phoneNumber}<br />
-                  <strong>Email:</strong> {application.email}<br />
+                  <strong>Phone:</strong> {application.phoneNumber || 'N/A'}<br />
+                  <strong>Email:</strong> {application.email || 'N/A'}<br />
                   <strong>Status:</strong> {application.status}
                 </Card.Text>
               </Card.Body>
-            </Card>
-          </Col>
+            </Accordion.Collapse>
+          </Card>
         ))}
-      </Row>
+      </Accordion>
     </Container>
   );
 };

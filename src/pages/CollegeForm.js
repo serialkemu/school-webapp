@@ -12,12 +12,14 @@ const CollegeForm = () => {
     email: '',
     dob: '',     
     gender: '',  
-    level : '',
+    level: '',
     location: '', 
     password: '', 
+    certificate: null, 
+    idPicture: null, 
   });
 
-  const level = [
+  const levels = [
     'Highschool',
     'Diploma',
     'Certificate',
@@ -49,13 +51,15 @@ const CollegeForm = () => {
     'HEC - Higher Education Certificate - Health Sciences',
   ];
 
-  
+  const handleFileChange = (e) => {
+    const { name, files } = e.target;
+    setFormData({ ...formData, [name]: files[0] });
+  };
+
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
   };
-
-
 
   const handleSelect = (value, name) => {
     setFormData({ ...formData, [name]: value });
@@ -65,21 +69,17 @@ const CollegeForm = () => {
     e.preventDefault();
 
     try {
-     
-      const formDataToSend = {
-        ...formData,
-      };
+      const formDataToSend = new FormData();
+      Object.keys(formData).forEach((key) => {
+        formDataToSend.append(key, formData[key]);
+      });
 
-     
-      console.log("Form data to send:", formDataToSend);
+      const response = await axios.post('http://localhost:5000/api/college', formDataToSend, {
+        headers: { 'Content-Type': 'multipart/form-data' },
+      });
 
-      
-      const response = await axios.post('http://localhost:5000/api/college', formDataToSend);
-      console.log(response.data); 
-
-     
+      console.log(response.data);
       alert('Form submitted successfully! You will be contacted');
-
     } catch (error) {
       console.error(error);
       alert('Failed to submit form! Please try again.');
@@ -93,7 +93,7 @@ const CollegeForm = () => {
         <Row>
           <Col>
             <Form.Group controlId="formFirstName">
-              <Form.FloatingLabel>First Name</Form.FloatingLabel>
+              <Form.Label>First Name</Form.Label>
               <Form.Control
                 type="text"
                 name="firstName"
@@ -201,12 +201,12 @@ const CollegeForm = () => {
         <Row>
           <Col>
             <Form.Group>
-              <Form.FloatingLabel>Level Of Education</Form.FloatingLabel>
+              <Form.Label>Level Of Education</Form.Label>
               <DropdownButton
                 title={formData.level || 'Select level'}
                 onSelect={(value) => handleSelect(value, 'level')}
               >
-                {level.map((lvl) => (
+                {levels.map((lvl) => (
                   <Dropdown.Item eventKey={lvl} key={lvl}>
                     {lvl}
                   </Dropdown.Item>
@@ -228,6 +228,28 @@ const CollegeForm = () => {
                   </Dropdown.Item>
                 ))}
               </DropdownButton>
+            </Form.Group>
+          </Col>
+        </Row>
+        <Row>
+          <Col>
+            <Form.Group controlId="formCertificate">
+              <Form.Label>Upload Certificate</Form.Label>
+              <Form.Control
+                type="file"
+                name="certificate"
+                onChange={handleFileChange}
+              />
+            </Form.Group>
+          </Col>
+          <Col>
+            <Form.Group controlId="formIdPicture">
+              <Form.Label>Upload ID Picture</Form.Label>
+              <Form.Control
+                type="file"
+                name="idPicture"
+                onChange={handleFileChange}
+              />
             </Form.Group>
           </Col>
         </Row>

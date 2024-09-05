@@ -27,14 +27,15 @@ const ParallaxSection = ({ title, text, parallaxClass = "parallax-section" }) =>
 );
 
 
-const CustomCard = ({ title, text, linkText, linkHref, images }) => (
+// CustomCard Component with clickable image
+const CustomCard = ({ title, text, linkText, linkHref, images, imageLink }) => (
   <Card className="m-4 custom-card no-border">
     <Card.Body>
       <Card.Title className='text-center'>{title}</Card.Title>
       <Row>
         {text && (
           <Col md={6}>
-            <Card.Text className='p-3 m-3' style={{height:'10rem'}}>
+            <Card.Text className='p-3 m-3' style={{ height: '10rem' }}>
               {text}
               {linkHref ? (
                 <a href={linkHref} className='link-danger link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover'>{linkText}</a>
@@ -47,7 +48,9 @@ const CustomCard = ({ title, text, linkText, linkHref, images }) => (
         {images && (
           <Col md={6} className="d-flex justify-content-around align-items-center">
             {images.map((img, idx) => (
-              <CardImg key={idx} src={img} className='img-fluid rounded' />
+              <a href={imageLink} target="_blank" rel="noopener noreferrer" key={idx}>
+                <CardImg src={img} className='img-fluid rounded' />
+              </a>
             ))}
           </Col>
         )}
@@ -56,7 +59,7 @@ const CustomCard = ({ title, text, linkText, linkHref, images }) => (
   </Card>
 );
 
-const CustomCardz = ({ titlez, textz, linkHrefz, linkTextz, imagez, btntex, btnLink }) => (
+const CustomCardz = ({ titlez, textz, linkHrefz, linkTextz, imagez, btntex, btnLink, imageLinkz }) => (
   <Card className='mb-4 custom-cardz no-border'>
     <Card.Body>
       <Card.Header className='text-center'>{titlez}</Card.Header>
@@ -64,13 +67,15 @@ const CustomCardz = ({ titlez, textz, linkHrefz, linkTextz, imagez, btntex, btnL
         {imagez && (
           <Col md={6} className="d-flex justify-content-center align-items-center">
             {imagez.map((img, idx) => (
-              <CardImg key={idx} src={img} className='img-fluid rounded' />
+              <a href={imageLinkz} target="_blank" rel="noopener noreferrer" key={idx}>
+                <CardImg src={img} className='img-fluid rounded' />
+              </a>
             ))}
           </Col>
         )}
         {textz && (
           <Col md={6}>
-            <Card.Text className='p-3 m-3' style={{height:'10rem'}}>
+            <Card.Text className='p-3 m-3' style={{ height: '10rem' }}>
               {textz}
               {linkHrefz ? (
                 <a href={linkHrefz} className='link-danger link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover'>{linkTextz}</a>
@@ -78,7 +83,7 @@ const CustomCardz = ({ titlez, textz, linkHrefz, linkTextz, imagez, btntex, btnL
                 <span>{linkTextz}</span>
               )}
             </Card.Text>
-            {btntex && <Button variant="primary" href={btnLink} className='btn btn-primary '>{btntex}</Button>}
+            {btntex && <Button variant="primary" href={btnLink} className='btn btn-primary'>{btntex}</Button>}
           </Col>
         )}
       </Row>

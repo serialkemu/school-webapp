@@ -8,17 +8,18 @@ import PreSchoolForm from './pages/PreSchoolForm';
 import LowerPrimaryForm from './pages/LowerPrimaryForm';
 import UpperPrimaryForm from './pages/UpperPrimaryForm';
 import Secondary from './pages/highschool/Secondary';
+import College from './pages/college/College';
 import CollegeForm from './pages/CollegeForm';
 import AdminPanel from './admin/AdminPanel';
 import Primary from './pages/primary/Primary';
 import Pre from './pages/preSchool/Pre';
 import AdminLogin from './components/forms/AdminLogin';
-
+import Footer from './components/Footer';
 
 const App = () => {
   return (
     <Router>
-      <NavigationBar />
+      <NavigationBar/>
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/admin-login" element={<AdminLogin />} />
@@ -29,9 +30,12 @@ const App = () => {
         <Route path="/lower-primary" element={<LowerPrimaryForm />} />
         <Route path="/upper-primary" element={<UpperPrimaryForm />} />
         <Route path="/secondary" element={<Secondary/>} />
-        <Route path="/college" element={<CollegeForm />} />
+        <Route path="/college" element={<College />} />
+        <Route path="/collegeForm" element={<CollegeForm />} />
+
       
       </Routes>
+      <Footer/>
     </Router>
   );
 };

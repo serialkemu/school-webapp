@@ -6,12 +6,12 @@ import FileCard from '../../components/FileCard';
 
 
 
-const Primary = () => {
+const Secondary = () => {
   return (
     <Container className="bg">
       <h1 className="text-center m-3 ">Secondary School
       </h1>
-      <Row>
+      <Row> Primary
         <Col className='col-12'>
         <p className="text-center">Please pick your class and access the resources available</p>
         </Col>
@@ -40,15 +40,7 @@ const Primary = () => {
               { name: "CRE/HRE/IRE", url: "" },
               { name: "Agriculture", url: "" },
               { name: "Business Stud ies", url: "" },
-            ]}
-          />
-          
-        </Col>
-        <Col md={12}>
-   <FileCard
-     title="Grade Two"
-     image="path_to_image" 
-     fileLinks={[
+          { name: "Computer Studies", url: "" },
        { name: "Electricity ", url: "link_to_file_1" },
        { name: "Drawing and Design", url: "link_to_file_2" },
        { name: "Aviation Technology", url: "" },
@@ -63,7 +55,7 @@ const Primary = () => {
        { name: "Power Mechanichs", url: "" },
        { name: "Arabic", url: "" },
        
-       // Add more file links as needed
+       
      ]}
    />
    </Col>
@@ -74,4 +66,4 @@ const Primary = () => {
   );
 };
 
-export default Primary;
+export default Secondary;
