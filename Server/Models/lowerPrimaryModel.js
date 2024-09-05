@@ -1,40 +1,43 @@
 const mongoose = require('mongoose');
-const Schema = mongoose.Schema;
 
-// Define a schema for Lower Primary form data with validation rules
-const lowerPrimarySchema = new Schema({
-  firstName: { 
-    type: String, 
-    required: [true, 'First name is required'], 
-    trim: true 
+const lowerPrimaryApplicationSchema = new mongoose.Schema({
+  firstName: {
+    type: String,
+    required: true,
+    trim: true,
   },
-  otherNames: { 
-    type: String, 
-    required: [true, 'Other names are required'], 
-    trim: true 
+  otherNames: {
+    type: String,
+    required: true,
+    trim: true,
   },
-  classGrade: { 
-    type: String, 
-    required: [true, 'Class/Grade is required'], 
-    trim: true 
+  classGrade: {
+    type: String,
+    required: true,
+    enum: ['Class 1', 'Class 2', 'Class 3'], // Restricting to predefined classes
   },
-  phoneNumber: { 
-    type: String, 
-    required: [true, 'Phone number is required'], 
-    match: [/^\d{10,12}$/, 'Phone number must be between 10 and 12 digits'] 
+  phoneNumber: {
+    type: String,
+    required: true,
+    trim: true,
   },
-  email: { 
-    type: String, 
-    required: [true, 'Email is required'], 
-    match: [/^\S+@\S+\.\S+$/, 'Please enter a valid email address'] 
+  email: {
+    type: String,
+    required: true,
+    trim: true,
+    match: [/.+\@.+\..+/, 'Please fill a valid email address'], // Email validation
   },
-  status: { 
-    type: String, 
-    enum: ['pending', 'approved', 'rejected'], 
-    default: 'pending' 
+  status: {
+    type: String,
+    enum: ['pending', 'approved', 'rejected'],
+    default: 'pending',
   },
-}, { timestamps: true });
+  createdAt: {
+    type: Date,
+    default: Date.now,
+  },
+});
 
-const LowerPrimary = mongoose.model('Lower-Primary Application', lowerPrimarySchema);
+const LowerPrimaryApplication = mongoose.model('LowerPrimaryApplication', lowerPrimaryApplicationSchema);
 
-module.exports = LowerPrimary;
+module.exports = LowerPrimaryApplication;

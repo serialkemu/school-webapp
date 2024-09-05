@@ -1,41 +1,43 @@
-const mongoose = require('mongoose')
-const Schema = mongoose.Schema;
+const mongoose = require('mongoose');
 
-// Define a schema for form data
-const upperPrimarySchema = new Schema({
-  firstName: { 
-    type: String, 
-    required: [true, 'First name is required'], 
-    trim: true 
+const upperPrimaryApplicationSchema = new mongoose.Schema({
+  firstName: {
+    type: String,
+    required: true,
+    trim: true,
   },
-  otherNames: { 
-    type: String, 
-    required: [true, 'Other names are required'], 
-    trim: true 
+  otherNames: {
+    type: String,
+    required: true,
+    trim: true,
   },
-  classGrade: { 
-    type: String, 
-    required: [true, 'Class/Grade is required'], 
-    trim: true 
+  classGrade: {
+    type: String,
+    required: true,
+    enum: ['Class 4', 'Class 5', 'Class 6', 'Class 7', 'Class 8'], // Predefined classes for upper primary
   },
-  phoneNumber: { 
-    type: String, 
-    required: [true, 'Phone number is required'], 
-    match: [/^\d{10,12}$/, 'Phone number must be between 10 and 12 digits'] 
+  phoneNumber: {
+    type: String,
+    required: true,
+    trim: true,
   },
-  email: { 
-    type: String, 
-    required: [true, 'Email is required'], 
-    match: [/^\S+@\S+\.\S+$/, 'Please enter a valid email address'] 
+  email: {
+    type: String,
+    required: true,
+    trim: true,
+    match: [/.+\@.+\..+/, 'Please fill a valid email address'], // Email validation
   },
-  status: { 
-    type: String, 
-    enum: ['pending', 'approved', 'rejected'], 
-    default: 'pending' 
+  status: {
+    type: String,
+    enum: ['pending', 'approved', 'rejected'],
+    default: 'pending',
   },
-}, { timestamps: true });
+  createdAt: {
+    type: Date,
+    default: Date.now,
+  },
+});
 
+const UpperPrimaryApplication = mongoose.model('UpperPrimaryApplication', upperPrimaryApplicationSchema);
 
-const UpperPrimary = mongoose.model('Upper-Primary Application', upperPrimarySchema);
-
-module.exports = UpperPrimary;
+module.exports = UpperPrimaryApplication;

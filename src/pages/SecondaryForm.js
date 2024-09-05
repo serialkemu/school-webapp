@@ -13,9 +13,10 @@ const SecondaryForm = () => {
   });
 
   const classes = [
-    'Class 1',
-    'Class 2',
-    'Class 3',
+    'Form 1',
+    'Form 2',
+    'Form 3',
+    'Form 4',
   ];
 
   // Handle text input changes

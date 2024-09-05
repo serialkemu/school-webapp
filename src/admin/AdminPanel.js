@@ -12,7 +12,6 @@ const AdminPanel = () => {
       console.log('Fetching applications with type:', type, 'and status:', status);
 
       const token = localStorage.getItem('token');
-      console.log('token: ', token)
       if (token) {
         const authHeader = `Bearer ${token}`;
 
@@ -23,7 +22,6 @@ const AdminPanel = () => {
           },
         });
 
-        console.log('Response data:', response.data);
         setApplications(response.data);
       } else {
         console.warn('No token found in localStorage');
@@ -34,9 +32,30 @@ const AdminPanel = () => {
   };
 
   useEffect(() => {
-    console.log('Type or status changed:', { type, status });
     fetchApplications();
   }, [type, status]);
+
+  const renderFields = (application) => {
+    switch (type) {
+      case 'pre-school':
+      case 'lower-primary':
+      case 'upper-primary':
+      case 'secondary':
+        return (
+          <>
+            <strong>Class:</strong> {application.classGrade}<br />
+          </>
+        );
+      case 'college':
+        return (
+          <>
+            <strong>Course:</strong> {application.course || 'N/A'}<br />
+          </>
+        );
+      default:
+        return null;
+    }
+  };
 
   return (
     <Container className="mt-4">
@@ -83,8 +102,12 @@ const AdminPanel = () => {
               <Card.Body>
                 <Card.Title>{application.firstName} {application.otherNames}</Card.Title>
                 <Card.Text>
-                  <strong>ID Number:</strong> {application.idNumber || 'N/A'}<br />
-                  <strong>Course/Class:</strong> {application.course || application.classGrade || 'N/A'}<br />
+                  {application.idNumber && (
+                    <>
+                      <strong>ID Number:</strong> {application.idNumber}<br />
+                    </>
+                  )}
+                  {renderFields(application)}
                   <strong>Phone:</strong> {application.phoneNumber}<br />
                   <strong>Email:</strong> {application.email}<br />
                   <strong>Status:</strong> {application.status}

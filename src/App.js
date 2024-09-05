@@ -7,7 +7,7 @@ import Home from './pages/Home'
 import PreSchoolForm from './pages/PreSchoolForm';
 import LowerPrimaryForm from './pages/LowerPrimaryForm';
 import UpperPrimaryForm from './pages/UpperPrimaryForm';
-import Secondary from './pages/highschool/Secondary';
+import Secondary from './pages/SecondaryForm';
 import CollegeForm from './pages/CollegeForm';
 import AdminPanel from './admin/AdminPanel';
 import Primary from './pages/primary/Primary';
