@@ -24,12 +24,12 @@ body, .container {
 }
 
 .parallax-section {
-  background-image: url('/home/kimunto/Downloads/school-website-master/src/assets/laphome.jpg');
+  background-image: url('/home/gangsta/Documents/Carreer/Web-Projects/school-webapp/src/assets/laphome.jpg');
   min-height: 400px;
 }
 
 .parallax-section-2 {
-  background-image: url('/home/kimunto/Downloads/school-website-master/src/assets/img/laphome6.jpg');
+  background-image: url('/home/gangsta/Documents/Carreer/Web-Projects/school-webapp/src/assets/img/laphome6.jpg');
   min-height: 350px;
 }
 
